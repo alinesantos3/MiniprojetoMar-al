@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript</title>
+</head>
+<body>
+    <script>
+var catalogoProdutos = [];
+
+function adicionarProduto() {
+    var nome = prompt("Digite o nome do produto:");
+    var preco = parseInt(prompt("Digite o preço do produto:"));
+    var descricao = prompt("Digite a descrição do produto:");
+
+    var novoProduto = {
+        nome: nome,
+        preco: preco,
+        descricao: descricao
+    };
+
+    catalogoProdutos.push(novoProduto);
+    alert("Produto adicionado!");
+}
+
+function buscarProduto() {
+    var nome = prompt("Insira o nome que deseja buscar:");
+    var encontrado = false;
+    
+      catalogo.forEach(function(produto) {
+        alert(`Nome: ${produtoEncontrado.nome}\nPreço: ${produtoEncontrado.preco}\nDescrição: ${produtoEncontrado.descricao}`);
+        if (produto.nome === nome) {
+            encontrado = true;
+        }
+    });
+    
+    if (!encontrado) {
+        alert("Produto não encontrado!");
+    }
+}
+function atualizarProduto() {
+    var nomeBusca = prompt("Digite o nome que deseja atualizar:");
+    var produtoIndex = catalogoProdutos.findIndex(({ nome }) => nome === nomeBusca);
+
+    if (produtoIndex !== -1) {
+        var novoPreco = parseInt(prompt("Digite o novo preço:"));
+        var novaDescricao = prompt("Digite a nova descrição:");
+
+        catalogoProdutos[produtoIndex].preco = novoPreco;
+        catalogoProdutos[produtoIndex].descricao = novaDescricao;
+        alert("Produto atualizado com sucesso!");
+    } else {
+        alert("Produto não encontrado.");
+    }
+}
+
+function exibirTodosProdutos() {
+    var listaProdutos = "Catálogo de Produtos:\n\n";
+    
+    catalogoProdutos.forEach(function(produto) {
+        listaProdutos += `Nome: ${produto.nome}\nPreço: ${produto.preco}\nDescrição: ${produto.descricao}\n\n`;
+    });
+    
+    alert(listaProdutos);
+}
+
+function removerProduto() {
+    var nomeRemocao = prompt("Digite o nome do produto que deseja remover:");
+    var produtoIndex = catalogoProdutos.findIndex(produto => produto.nome === nomeRemocao);
+
+    if (produtoIndex !== -1) {
+        catalogoProdutos.splice(produtoIndex, 1);
+        alert("Produto removido com sucesso!");
+    } else {
+        alert("Produto não encontrado.");
+    }
+}
+
+var opcao = 0;
+while (opcao !== 6) {
+    opcao = parseInt(prompt("Escolha uma opção:\n1. Adicionar \n2. Visualizar \n3. Buscar \n4. Atualizar \n5. Remover \n6. Sair"));
+
+    if (opcao === 1) {
+        adicionarProduto();
+    } else if (opcao === 2) {
+        exibirTodosProdutos();
+    } else if (opcao === 3) {
+        buscarProduto();
+    } else if (opcao === 4) {
+        atualizarProduto();
+    } else if (opcao === 5) {
+        removerProduto();
+    } else if (opcao === 6) {
+        alert("Saindo...");
+    } else {
+        alert("Opção inválida. Tente novamente.");
+    }
+}
+        </script>
+</body>
+</html>
